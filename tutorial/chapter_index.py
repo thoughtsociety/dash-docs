@@ -19,17 +19,18 @@ import sharing_state
 import state
 import support
 import urls
+import react_for_python
 
-## The chapters dict is used to generate the dash-docs search index
-## If edited, update the search index by running `python dash_search_index.py`
-## in the root of this repo.
+# The chapters dict is used to generate the dash-docs search index
+# If edited, update the search index by running `python dash_search_index.py`
+# in the root of this repo.
 
 chapters = {
     ### home.py ###
     'introduction': {
         'url': '/introduction',
         'content': introduction.layout,
-        'name':'Introduction',
+        'name': 'Introduction',
         'description': 'Dash is a productive Python framework for ' \
                        'building web applications written on top of ' \
                        'Flask, Plotly.js, and React.js.'
@@ -208,7 +209,14 @@ chapters = {
                        'Dash workshops, sponsored feature requests and ' \
                        'customizations.'
     },
-### End of home.py ###
+
+    'react-for-python': {
+        'url': '/react-for-python',
+        'content': react_for_python.layout,
+        'name': 'React for Python developers',
+        'description': 'A tutorial on how to program in React and JavaScript for Python developers.'
+    },
+    ### End of home.py ###
 
     'dropdown-examples': {
         'url': '/dash-core-components/dropdown',

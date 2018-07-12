@@ -88,6 +88,12 @@ layout = html.Div(className='toc', children=[
                 chapters['plugins']['description'])
     ]),
 
+    Section('Creating Your Own Components', [
+        Chapter(chapters['react-for-python']['name'],
+                chapters['react-for-python']['url'],
+                chapters['react-for-python']['description'])
+    ]),
+
     Section('Advanced Usage', [
         Chapter(chapters['performance']['name'],
                 chapters['performance']['url'],
