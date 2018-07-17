@@ -243,7 +243,8 @@ layout = [dcc.Markdown('''
 
   TextInput.propTypes = {
     /** 
-    * This comment will also get parsed by Dash, so that it is available in help(component.TextInput)
+    * This comment will also get parsed by Dash, 
+    * so that it is available in help(component.TextInput)
     **/
     label: PropTypes.string
   }
@@ -284,7 +285,8 @@ layout = [dcc.Markdown('''
 
   TextInput.propTypes = {
     /** 
-    * This comment will also get parsed by Dash, so that it is available in help(component.TextInput)
+    * This comment will also get parsed by Dash, 
+    * so that it is available in help(component.TextInput)
     **/
     label: PropTypes.string,
 
