@@ -13,12 +13,14 @@ layout = [dcc.Markdown('''
   never programmed in JavaScript and/or used React before, you might feel slightly confused. This guide hopes to bridge the gap between 
   your knowledge of Python and Dash and the languages and frameworks we use to create awesome Dash components!
 
+  #### JavaScript
   JavaScript is the language of the web - all modern browsers can run it, and most modern web pages use it to make their pages interactive.
   It is the de-facto standard of front end development, and has come a long way since it's inception. Today, modern JavaScript features
   a rich set of features, designed to create a development experience perfectly suited for the web. 
 
+  #### React
   React is JavaScript library for building user interfaces, written and maintained by Facebook. It has been very popular over the last few
-  years, mainly because it brings the power of reactive, declarative programming (sound familiar?) to the world of front end development. 
+  years, mainly because it brings the power of reactive, declarative programming to the world of front end development. 
   What this means is that it brings power to those programming complex applications on the web, giving them the ability to write highly 
   interactive web pages in a single language.
 
@@ -33,15 +35,19 @@ layout = [dcc.Markdown('''
   mostly just simple wrappers around existing React components. This means the entire React ecosystem is potentially usable in a Dash application!
 
   ## Installing everything you need
-  Let's start by setting up our JavaScript development environment. We will use `node`, `npm`, and `create-react-app` to write our first React
-  application. Node.js is a JavaScript runtime, which allows you to run JavaScript code outside of the browser. This comes in very handy when developing, 
-  so we can take advantage of the extensive tooling, provided by NPM, which stands for Node Package Manager, that is available today when writing in JavaScript, such as `create-react-app`. The `create-react-app` 
-  tool allows you to very easily set up a new React project. It handles basically everything for you, from setting up tools that watch and reload your code
+  Let's start by setting up our JavaScript development environment. We will use Node.js, NPM, and `create-react-app` to write our first React
+  application. Node.js is a JavaScript runtime, which allows you to run JavaScript code outside of the browser. Just like you would run 
+  `python my-code.py` to run Python code in a terminal, you'd run `node my-code.js` to run JavaScript code in a terminal. 
+  Node comes in very handy when developing, even when you intend to run the code in the browser.
+  With Node we can take advantage of the extensive tooling, provided by NPM, which stands for Node Package Manager (Node's version of `pip`), 
+  that is available today when writing in JavaScript. 
+  One of those tools is `create-react-app`, built by the core team behind React. This tool allows you to very easily set up a new React project. 
+  It handles basically everything for you, from setting up tools that watch and reload your code
   to running a local server so you can see what your app looks like. It even sets up a system called `webpack`, which bundles all your code and assets
   together and - you guessed it - packs it up for the web.
 
   - To install Node.js, go to [the Node.js website](https://nodejs.org/en/) to download the latest (stable) version. 
-  - Node.js will automatically install the Node Package Manager (npm) on your machine
+  - Node.js will automatically install the Node Package Manager `npm` on your machine
   - Verify that node is installed by running: `node -v`
   - Verify that npm is installed by running: `npm -v`
 
@@ -59,7 +65,7 @@ layout = [dcc.Markdown('''
   "Welcome to React" text to "Welcome to Dash", and save it. Now, go back to the browser, and notice how it hot-reloads the page!
 
   #### JSX
-  You probably already noticed that the text you changed was wrapped in a `<h1>` tag. It looks like HTML, but it's in a JavaScript file?! What gives? This is
+  You probably already noticed that the text you changed was wrapped in a `<h1>` tag. It looks like HTML, but slightly different! What gives? This is
   what is called JSX. A language developed by the React team to have easy, inline, HTML markup in your JavaScript components! Don't let the word 'language' scare
   you - it is mostly exactly the same as regular HTML. The main difference lies in the naming of attributes - `class` (for appending a CSS class to an HTML tag) is
   named `className` here, as to avoid confusion with the actual `class` keyword in JavaScript (yes, JavaScript has classes, just like in Python!).
@@ -72,9 +78,9 @@ layout = [dcc.Markdown('''
   only have to concentrate on declaring how we want things to look like, and how we want things to behave! 
 
   #### Classes
-  Now, as a Python developer, classes are probably nothing new to you. In the JavaScript community, however, classes are a relatively new addition! They've become available to us
+  Now, as a Python developer, classes are probably nothing new to you. In the JavaScript community, however, classes are a relatively new addition. They've become available to us
   in `ES6`, which stands for EcmaScript 6 - an updated version of JavaScript. React greatly benefits from this enhanced versions of JavaScript, so they decided
-  to set us up with a transpiler called Babel. Babel is nothing more than a tool that converts (or transpiles) your ES6 (or 7 and even 8) code into JavaScript
+  to set us up with a transpiler called Babel. Babel is nothing more than a tool that converts (or transpiles) your ES6 (or ES7 and ES8) code into JavaScript
   all browsers can understand (even older ones like Internet Explorer!). This allows us to write modern JavaScript - which includes classes - whilest not having to worry (too much) about browser support. Babel comes included with `create-react-app`.
 
   We see here in our `App` component that it is defined as a `class` which `extends` from the `Component` class of React. This provides some methods to us, for example the `render()` method we're using here. `render()` is the method that is called by the *component that is rendering it*. In our case, `render()` is called
@@ -114,7 +120,7 @@ layout = [dcc.Markdown('''
   }
   ```
 
-  `props` are a component's properties. They are passed down from a component's parent, and are available as the `props` attribute. Calling `super()` on `props` in the constructo, makes our props available in the component as `this.props`. The `this` keyword in JavaScript is Python's `self`. We'll show you how to pass down
+  `props` are a component's properties. They are passed down from a component's parent, and are available as the `props` attribute. Calling `super()` on `props` in the constructor, makes our props available in the component as `this.props`. The `this` keyword in JavaScript is Python's `self`. We'll show you how to pass down
   `props` a bit later on.
 
   We're also defining `this.state` here, which is an `object`. `object`'s in JavaScript are a lot like `dict`'s in Python. They are specified in a notation
