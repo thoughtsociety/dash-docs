@@ -39,12 +39,13 @@ layout = [dcc.Markdown('''
   application. Node.js is a JavaScript runtime, which allows you to run JavaScript code outside of the browser. Just like you would run 
   `python my-code.py` to run Python code in a terminal, you'd run `node my-code.js` to run JavaScript code in a terminal. 
   Node comes in very handy when developing, even when you intend to run the code in the browser.
-  With Node we can take advantage of the extensive tooling, provided by NPM, which stands for Node Package Manager (Node's version of `pip`), 
-  that is available today when writing in JavaScript. 
-  One of those tools is `create-react-app`, built by the core team behind React. This tool allows you to very easily set up a new React project. 
-  It handles basically everything for you, from setting up tools that watch and reload your code
-  to running a local server so you can see what your app looks like. It even sets up a system called `webpack`, which bundles all your code and assets
-  together and - you guessed it - packs it up for the web.
+
+  #### NPM
+  With Node we can take advantage of the extensive tooling, provided by NPM, which stands for Node Package Manager. Besides being a package manager 
+  (not unlike `pip` for Python), `npm` also allows you to do other stuff like run scripts and perform tasks, such as creating a project for you by running `npm init`, starting up a project by running `npm start`, or firing custom scripts by running `npm run custom-script`. These scripts are defined in a `package.json` file, which every project that uses `npm` has. The `package.json` file holds your `requirements` and `devRequirements`, which can be installed using `npm install`, the same way `pip` has a `requirements.txt` option you can use in `pip install -r requirements.txt`. `package.json` also holds a `scripts` section, where custom scripts can be defined. It is usually a good idea to check out a new project's `package.json` file, to see what kind of scripts you can run!
+
+  A great tool we can use is `create-react-app`, built by the core team behind React. This tool allows you to very easily set up a new React project. 
+  It sets up your `package.json` file for you, with custom scripts for running a development server, watching & hot-reloading your code (so you see changes you've made instantly), and creates some boilerplate React code for you to get you started. It even sets up something called `webpack` for you, which bundles all your files together into one neat package, specifically made for the web!
 
   - To install Node.js, go to [the Node.js website](https://nodejs.org/en/) to download the latest (stable) version. 
   - Node.js will automatically install the Node Package Manager `npm` on your machine
@@ -53,9 +54,9 @@ layout = [dcc.Markdown('''
 
   Now that we have Node.js up and running, we'll go ahead and initialize a new project using `create-react-app` by running:
   - `npm init react-app my-app`
+  *Note that you need to have `npm` version 6+ for the `npm init` command to work - if you have a version below that, the command `npx create-react-app my-app` should also work!*
 
-  This sets up everything you need for a React application! It will give you some instructions on how to start it up after it's done
-  installing, most likely it will tell you to run `yarn start`. Yarn is another JavaScript package manager, which you can also use
+  This sets up and installs everything you need for a React application! After it's done running, it will give you some instructions on how to start your app, most likely it will tell you to run `yarn start`. Yarn is another JavaScript package manager, which you can also use
   instead of NPM. It's up to you - either `npm start` or `yarn start` will work!
 
   ## Quick intro to React
@@ -66,7 +67,7 @@ layout = [dcc.Markdown('''
 
   #### JSX
   You probably already noticed that the text you changed was wrapped in a `<h1>` tag. It looks like HTML, but slightly different! What gives? This is
-  what is called JSX. A language developed by the React team to have easy, inline, HTML markup in your JavaScript components! Don't let the word 'language' scare
+  what is called JSX - a language developed by the React team to have easy, inline, HTML-like markup in your JavaScript components. Don't let the word 'language' scare
   you - it is mostly exactly the same as regular HTML. The main difference lies in the naming of attributes - `class` (for appending a CSS class to an HTML tag) is
   named `className` here, as to avoid confusion with the actual `class` keyword in JavaScript (yes, JavaScript has classes, just like in Python!).
 
@@ -234,7 +235,7 @@ layout = [dcc.Markdown('''
   ## Using your React components in Dash
 
   We can use most, if not all, components build in React in Dash! Dash uses React under the hood, specifically in the `dash-renderer`. The `dash-renderer` is basically just a React app, that renders the
-  layout defined in your Dash app as `app.layout`! It is also resposible for assigning the callbacks you write in Dash to the proper components, and keeping everything up-to-date. The `App` component
+  layout defined in your Dash app as `app.layout`! It is also responsible for assigning the callbacks you write in Dash to the proper components, and keeping everything up-to-date. The `App` component
   we have been working with so far can simply be thought of as `dash-renderer`!
 
   There are, of course, some steps you must take for your component to work nicely with Dash. The `props` you want to be available in Dash, should be specified as `propTypes` on the React component, so that the
