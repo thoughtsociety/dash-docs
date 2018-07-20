@@ -47,7 +47,7 @@ layout = [dcc.Markdown('''
   A great tool we can use is `create-react-app`, built by the core team behind React. This tool allows you to very easily set up a new React project. 
   It sets up your `package.json` file for you, with custom scripts for running a development server, watching & hot-reloading your code (so you see changes you've made instantly), and creates some boilerplate React code for you to get you started. It even sets up something called `webpack` for you, which bundles all your files together into one neat package, specifically made for the web!
 
-  - To install Node.js, go to [the Node.js website](https://nodejs.org/en/) to download the latest (stable) version. 
+  - To install Node.js, go to [the Node.js website](https://nodejs.org/en/) to download the latest version. 
   - Node.js will automatically install the Node Package Manager `npm` on your machine
   - Verify that node is installed by running: `node -v`
   - Verify that npm is installed by running: `npm -v`
@@ -147,7 +147,7 @@ layout = [dcc.Markdown('''
   export default TextInput;
   ```
 
-  Now, let's `import` that component and use it in our `App` component! Add the `import TextInput from './TextInput';` line to `App.js`, and somewhere
+  Now, let's `import` that component and use it in our `App` component! Add the `import TextInput from './TextInput';` line to the top of `App.js`, and somewhere
   in the return of our `render()` method, use our newly created `<TextInput />` component.
 
   Tada!
@@ -214,7 +214,7 @@ layout = [dcc.Markdown('''
   Notice that we're not allowed to return multiple elements from `render()`, but an element with children is totally fine.
 
   We can also pass along properties to our components, via the before mentioned `props`. This works the same as assigning attributes on a component, as we'll demonstrate by adding a `label` prop to our `TextInput` component!
-  Let's edit our call to `<TextInput />` to say `<TextInput label='dash-input' />`. This means we now have a `prop` called `label` available on our `TextInput` component! 
+  Let's edit our call to `<TextInput />` in `App.js` to say `<TextInput label='dash-input' />`. This means we now have a `prop` called `label` available on our `TextInput` component! 
   In `TextInput`, we can reference this via `this.props`. Let's extend our `render()` method further so it renders our `label` prop:
 
   ```
@@ -354,5 +354,7 @@ export default App;
 We set `setProps` here to be a new function (an arrow function, read about them [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)) that calls
 `setState()` with the new props provided by `setProps`. We also set the `value` of our `TextInput` component to be equal to `this.state.value`, and voila! That is the basics of how Dash and `dash-renderer` work
 together.
+
+Next up, we will talk about how to convert this React component into a component that Dash can use!
 
 ''')]
