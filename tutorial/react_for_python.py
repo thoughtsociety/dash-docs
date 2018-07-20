@@ -67,9 +67,8 @@ layout = [dcc.Markdown('''
 
   #### JSX
   You probably already noticed that the text you changed was wrapped in a `<h1>` tag. It looks like HTML, but slightly different! What gives? This is
-  what is called JSX - a language developed by the React team to have easy, inline, HTML-like markup in your JavaScript components. Don't let the word 'language' scare
-  you - it is mostly exactly the same as regular HTML. The main difference lies in the naming of attributes - `class` (for appending a CSS class to an HTML tag) is
-  named `className` here, as to avoid confusion with the actual `class` keyword in JavaScript (yes, JavaScript has classes, just like in Python!).
+  what is called JSX - a syntax extension to JavaScript developed by the React team to have easy, inline, HTML-like markup in your JavaScript components. It is mostly exactly the same as regular HTML. The main difference lies in the naming of attributes - `class` (for appending a CSS class to an HTML tag) is
+  named `className` here, as to avoid confusion with the actual `class` keyword in JavaScript (yes, JavaScript has classes, just like in Python!). React doesn't require you to use JSX, but most people find it helpful as a visual aid when working with UI inside the JavaScript code. To learn more about how JSX works and why people use it, read the [documentation here!](https://reactjs.org/docs/introducing-jsx)
 
 
   #### Virtual DOM
