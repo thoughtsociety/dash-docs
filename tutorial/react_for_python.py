@@ -315,8 +315,15 @@ layout = [dcc.Markdown('''
   export default TextInput;
 ```
 
-Note that if you run this example above in our `create-react-app`, `setProps` is not defined - because we're not running this from Dash yet - Dash will make sure the `setProps` prop is
-defined! You can provide a `setProps` method yourself ofcourse, because like we said before, `App` is basically like `dash-renderer`:
+Note that if you run this example above in our `create-react-app`, `setProps` is not defined - because we're not running this from Dash yet. Dash will make sure the `setProps` prop is
+defined, by injecting it in our component when it passes it to `dash-renderer`. The `setProps` method *lifts up* the state from being handled *in the React component itself* (via `setState`) to being handled *from within your Dash application*. This means that if we use `setProps` in our React component, the
+values passed into `setProps` are also being updated inside Dash. This is very useful if you want users of your component to be able to change the props of your component from within Dash.
+[!img](https://github.com/plotly/dash-docs/raw/master/images/setProps_example.png)
+
+The flow of `setState` works like this - which is handy for keeping state internally, so that Dash users don't have to deal with it:
+[!img](https://github.com/plotly/dash-docs/raw/master/images/setState_example.png)
+
+When developing, we're usually not running our Dash application - we're running our component somewhere else, in our case, we're running it with the tools provided by `create-react-app`. This means we do not have the `setProps` method available to play with, but we can easily define it ourselves, so we have something to work with:
 
 ```
 import React, { Component } from "react";
@@ -357,9 +364,8 @@ export default App;
 ```
 
 We set `setProps` here to be a new function (an arrow function, read about them [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)) that calls
-`setState()` with the new props provided by `setProps`. We also set the `value` of our `TextInput` component to be equal to `this.state.value`, and voila! That is the basics of how Dash and `dash-renderer` work
-together.
+`setState()` with the new props provided by `setProps`. We also set the `value` of our `TextInput` component to be equal to `this.state.value`. Note that this is simply a work-around for not having the `setProps` method available (because Dash provides that method for us, and we're not yet running our component in Dash - we're using `create-react-app` to run our component).
 
-Next up, we will talk about how to convert this React component into a component that Dash can use!
+We will talk about how to convert this React component into a component that Dash can use in the next section! (Coming soon)
 
 ''')]
