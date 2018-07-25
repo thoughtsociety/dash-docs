@@ -126,7 +126,12 @@ layout = [dcc.Markdown('''
   We're also defining `this.state` here, which is an `object`. `object`'s in JavaScript are a lot like `dict`'s in Python. They are specified in a notation
   called `JSON`, which stands for JavaScript Object Notation. We're setting a `key` on our `state` object, called `value`, to be a string, 'default'.
 
-  Next, let's define our `render()` method, because all components should render something! Every `render()` method should `return` something, in our case, we'll return a HTML/JSX tag, `<input/>`. 
+  Next, let's define our `render()` method for our new component. In React, we are declaring UI components, and the `render()` method is the method that is called
+  when React wants to render those component. React is in charge of keeping track of our components and all of it's state, so it keeps up-to-date. It does this very efficiently, with the use of something called the virtual DOM and React Fiber ([here](https://reactjs.org/docs/faq-internals.html) is a good place to start if you want to learn more about this).
+
+  A component's `render` method can return a basic string, for example `return "Hello, World!"`. When this component is used somewhere, it's `render()` method is called and "Hello, World!" will be displayed on our page. Likewise, you can return a React element (specified using JSX) and React will render that element.
+  There are more things you can do in `render()`, but typically you shouldn't modify state in this method. Read more [here](https://reactjs.org/docs/react-component.html#render)
+
   We'll also go ahead and `export` our component, as the `default`. This means whenever we're trying to `import` something from this file, and we don't specify a name, we'll get the `default` export.
 
   ```
@@ -160,7 +165,7 @@ layout = [dcc.Markdown('''
   that we want to write inline JavaScript in our JSX/HTML, so our `this.state.value` statement can be computed. Great! Now our input says 'default'! Unfortunately, our input
   is still not very useful, because we can't change our input's value, try as we might.  
 
-  We'll need to write some sort of event handler for this. Luckily, we can handle this all in React! We can define methods on our component's class, and use those in our `<input/>` tag.
+  We'll need to write some sort of event handler for this.  We can define methods on our component's class, and use those in our `<input/>` tag.
 
   ```
   import React, { Component } from 'react';
@@ -206,7 +211,7 @@ layout = [dcc.Markdown('''
   render() {
     return <div>
       <input value={this.state.value} onChange={this.handleInputChange} />
-      <p>{this.state.value}</p>
+      <p>{this.state.value}</p> // here we're displaying our state
     </div>
   }
   ``` 
