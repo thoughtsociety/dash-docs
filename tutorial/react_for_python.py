@@ -3,7 +3,7 @@ import dash_html_components as html
 
 import styles
 
-layout = [dcc.Markdown('''
+layout = html.Div([dcc.Markdown('''
   # React for Python developers: a primer
 
   ## Introduction
@@ -290,7 +290,8 @@ layout = [dcc.Markdown('''
       })
     }
     render() {
-      return <input value={this.props.value} onChange={this.handleInputChange}/>
+      return <input value={this.props.value} onChange={this.handleInputChange}/mg
+      >
     }
   }
 
@@ -318,11 +319,29 @@ layout = [dcc.Markdown('''
 Note that if you run this example above in our `create-react-app`, `setProps` is not defined - because we're not running this from Dash yet. Dash will make sure the `setProps` prop is
 defined, by injecting it in our component when it passes it to `dash-renderer`. The `setProps` method *lifts up* the state from being handled *in the React component itself* (via `setState`) to being handled *from within your Dash application*. This means that if we use `setProps` in our React component, the
 values passed into `setProps` are also being updated inside Dash. This is very useful if you want users of your component to be able to change the props of your component from within Dash.
-[!img](https://github.com/plotly/dash-docs/raw/master/images/setProps_example.png)
+'''),
 
+html.Img(
+    src='https://github.com/plotly/dash-docs/raw/59b68fc42d018d8533385530f9f32b73b1618741/images/setProps_example.png',
+    alt='setProps example',
+    style={
+        'width': '100%', 'border': 'thin lightgrey solid',
+        'border-radius': '4px'
+    }),
+
+dcc.Markdown('''
 The flow of `setState` works like this - which is handy for keeping state internally, so that Dash users don't have to deal with it:
-[!img](https://github.com/plotly/dash-docs/raw/master/images/setState_example.png)
+'''),
 
+html.Img(
+    src='https://github.com/plotly/dash-docs/raw/59b68fc42d018d8533385530f9f32b73b1618741/images/setState_example.png',
+    alt='setProps example',
+    style={
+        'width': '100%', 'border': 'thin lightgrey solid',
+        'border-radius': '4px'
+    }),
+
+dcc.Markdown('''
 When developing, we're usually not running our Dash application - we're running our component somewhere else, in our case, we're running it with the tools provided by `create-react-app`. This means we do not have the `setProps` method available to play with, but we can easily define it ourselves, so we have something to work with:
 
 ```
@@ -368,4 +387,5 @@ We set `setProps` here to be a new function (an arrow function, read about them 
 
 We will talk about how to convert this React component into a component that Dash can use in the next section! (Coming soon)
 
-''')]
+''')
+])
