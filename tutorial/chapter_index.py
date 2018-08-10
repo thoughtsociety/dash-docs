@@ -314,6 +314,34 @@ chapters = {
     },
 ### End Components ###
 ### Start Dash Deployment Server ###
+    'ssh-examples': {
+        'url': '/dash-deployment-server/ssh',
+        'content': dds_examples.Ssh,
+        'name': '',
+        'description': 'Authenticating to Plotly Enterprise with SSH'
+    },
+
+    'create-deploy-examples': {
+        'url': '/dash-deployment-server/deployment',
+        'content': dds_examples.Deploy,
+        'name': '',
+        'description': 'Deploy Dash Apps on Plotly Enterprise'
+    },
+
+    'app-auth-examples': {
+        'url': '/dash-deployment-server/app-authentication',
+        'content': dds_examples.Authentication,
+        'name': '',
+        'description': 'Adding Authentication to your Dash App'
+    },
+
+    'config-sys-examples': {
+        'url': '/dash-deployment-server/configure-system-dependencies',
+        'content': dds_examples.ConfigSys,
+        'name': '',
+        'description': ''
+    },
+
     'redis-examples': {
         'url': '/dash-deployment-server/redis-database',
         'content': dds_examples.Redis,
@@ -333,6 +361,13 @@ chapters = {
         'content': dds_examples.LocalDir,
         'name': 'Upload Component',
         'description': 'Mapping Local Directories'
+    },
+
+    'troubleshooting-examples': {
+        'url': '/dash-deployment-server/troubleshooting',
+        'content': dds_examples.Troubleshooting,
+        'name': '',
+        'description': 'Troubleshooting App Deployment'
     },
 ### End Dash Deployment Server ###
     'search': {
