@@ -77,6 +77,20 @@ class Tests(IntegrationTests):
         links = [
             a.get_property('id') for a in
             self.driver.find_elements_by_css_selector('a')
+        ] + [
+            '/dash-deployment-server/ssh',
+            '/dash-deployment-server/initialize',
+            '/dash-deployment-server/deploy-requirements',
+            '/dash-deployment-server/deployment',
+            '/dash-deployment-server/app-authentication',
+            '/dash-deployment-server/configure-system-dependencies',
+            '/dash-deployment-server/redis-database',
+            '/dash-deployment-server/enviornment-variables',
+            '/dash-deployment-server/map-local-directories',
+            '/dash-deployment-server/troubleshooting',
+            '/dash-deployment-server/analytics',
+            '/dash-deployment-server/logs',
+            '/dash-deployment-server/support'
         ]
 
         def visit_and_snapshot(href):
