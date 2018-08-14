@@ -24,8 +24,10 @@ examples = {
     'upload-image':  tools.load_example('tutorial/examples/core_components/upload-image.py'),
     'upload-datafile':  tools.load_example('tutorial/examples/core_components/upload-datafile.py'),
     'upload-gallery':  tools.load_example('tutorial/examples/core_components/upload-gallery.py'),
+    'confirm': tools.load_example('tutorial/examples/core_components/confirm.py'),
+    'confirm-provider': tools.load_example('tutorial/examples/core_components/confirm_provider.py'),
     'tabs_simple':  tools.load_example('tutorial/examples/core_components/tabs_simple.py'),
-    'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback.py'),
+    'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback_graph.py'),
 }
 
 
@@ -991,33 +993,51 @@ Textarea = html.Div(children=[
 
 # Tabs
 Tabs = html.Div(children=[
-    html.H3('Tabs Examples and Reference'),
+    html.H1('Tabs Examples and Reference'),
+    html.H2('Method 1. Content as Callback'),
     dcc.Markdown(s('''
-    The Tabs and Tab components can be used to create tabbed sections in your app. 
-    You can let Dash handle the selection logic, or program it yourself so you have a bit more control. 
-    Here's a simple example that lets Dash handle the selection logic:
-    ''')),
-    dcc.SyntaxHighlighter(
-        examples['tabs_simple'][0],
-        customStyle=styles.code_container
-    ),
-    dcc.Markdown(s('''
-    The drawback here is that Dash will load all the content in the Tab's children on page load,
-    which could be slow if you do a lot of computationally intensive tasks.
-
-    You can also attach a callback to the Tabs `value` prop, and handle selection
-    yourself for more control:
+    The `Tab` component controls the style and value of the individual tab
+    and the `Tabs` component hold a collection of `Tab` components.
+    Attach a callback to the Tabs `value` prop and update a container's `children`
+    property in your callback.
     ''')),
     dcc.SyntaxHighlighter(
         examples['tabs_callback'][0],
         customStyle=styles.code_container
     ),
+    html.Div(examples['tabs_callback'][1], className='example-container'),
     dcc.Markdown(s('''
-    Here we set a value on each Tab component, which can be read in a callback. We then output the tab
-    content to a div's children, so only the content we want to display is loaded. This is handy if
-    you do computationally intensive tasks, because this way you have control over what to output and
-    when!
+    In the example above, our callback contains all of the content. In practice,
+    we'll keep the tab's content in separate files and import the data.
+    For an example, see the [URLs and Multi-Page App Tutorial](/urls).
     ''')),
+
+    html.H2('Method 2. Content as Tab Children'),
+    dcc.Markdown(s('''
+    Instead of displaying the content through a callback, you can embed the content
+    directly as the `children` property in the `Tab` component:
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['tabs_simple'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(examples['tabs_simple'][1], className='example-container'),
+    dcc.Markdown(s('''
+    Note that this method has a couple of drawbacks:
+    - It requires that you compute the children property for each individual
+    tab _upfront_ and send all of the tab's content over the network _at once_.
+    The callback method allows you to compute the tab's content _on the fly_
+    (that is, when the tab is clicked).
+    - There have been some bug reports that graphs are not getting resized
+    properly if this method is being used. See [dash-core-components#256](https://github.com/plotly/dash-core-components/issues/256)
+    for more details.
+    - The second tab, instead of the first tab, is selected by default.
+    This is a bug and will be fixed. Track our progress in  [dash-core-components#262](https://github.com/plotly/dash-core-components/issues/262).
+    ''')),
+
+    html.Hr(),
+
     html.H3('Tabs properties'),
     generate_prop_table('Tabs'),
     html.H3('Tab properties'),
@@ -1028,7 +1048,7 @@ Tabs = html.Div(children=[
 Upload = html.Div([
     html.H1('Upload Component'),
     dcc.Markdown(s('''
-    The Dash upload component allows your app's veiwers to upload files,
+    The Dash upload component allows your app's viewers to upload files,
     like excel spreadsheets or images, into your application.
     Your Dash app can access the contents of an upload by listening to
     the `contents` property of the `dcc.Upload` component.
@@ -1070,4 +1090,30 @@ Upload = html.Div([
 
     html.H2('Upload Component Properties'),
     generate_prop_table('Upload')
+])
+
+# ConfirmDialog
+ConfirmDialog = html.Div([
+    html.H1('ConfirmDialog component'),
+    dcc.Markdown(s('''
+    ConfirmDialog is used to display the browser's native "confirm" modal,
+    with an optional message and two buttons ("OK" and "Cancel").
+    This ConfirmDialog can be used in conjunction with buttons when the user
+    is performing an action that should require an extra step of verification.
+    ''')),
+    Syntax(examples['confirm'][0]),
+    Example(examples['confirm'][1]),
+    generate_prop_table('ConfirmDialog')
+])
+
+# ConfirmDialogProvider
+ConfirmDialogProvider = html.Div([
+    html.H1('ConfirmDialogProvider component'),
+    dcc.Markdown(s('''
+    Send a [ConfirmDialog](/dash-core-components/confirm) when the user
+    clicks the children of this component, usually a button.
+    ''')),
+    Syntax(examples['confirm-provider'][0]),
+    Example(examples['confirm-provider'][1]),
+    generate_prop_table('ConfirmDialogProvider')
 ])
