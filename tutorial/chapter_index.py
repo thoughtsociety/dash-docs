@@ -313,12 +313,27 @@ chapters = {
         'description': 'Upload examples, properties, and reference.'
     },
 ### End Components ###
+
 ### Start Dash Deployment Server ###
     'ssh-examples': {
         'url': '/dash-deployment-server/ssh',
         'content': dds_examples.Ssh,
         'name': '',
         'description': 'Authenticating to Plotly Enterprise with SSH'
+    },
+
+    'initialize-examples': {
+        'url': '/dash-deployment-server/initialize',
+        'content': dds_examples.Initialize,
+        'name': '',
+        'description': 'Initialize Dash Apps on Plotly Enterprise'
+    },
+
+    'requirements-examples': {
+        'url': '/dash-deployment-server/deploy-requirements',
+        'content': dds_examples.Requirements,
+        'name': '',
+        'description': 'Dash Apps Requirements on Plotly Enterprise'
     },
 
     'create-deploy-examples': {
@@ -353,13 +368,14 @@ chapters = {
         'url': '/dash-deployment-server/enviornment-variables',
         'content': dds_examples.EnvVars,
         'name': 'Setting Enviornment Variables',
-        'description': 'Upload examples, properties, and reference.'
+        'description': 'Environment variables are config values that ' \
+        'can affect the way your app behaves.'
     },
 
     'local-dir-examples': {
         'url': '/dash-deployment-server/map-local-directories',
         'content': dds_examples.LocalDir,
-        'name': 'Upload Component',
+        'name': 'Mapping Local Directories',
         'description': 'Mapping Local Directories'
     },
 
@@ -369,7 +385,29 @@ chapters = {
         'name': '',
         'description': 'Troubleshooting App Deployment'
     },
+
+    'analytics-examples': {
+        'url': '/dash-deployment-server/analytics',
+        'content': dds_examples.Analytics,
+        'name': '',
+        'description': ''
+    },
+
+    'logs-examples': {
+        'url': '/dash-deployment-server/logs',
+        'content': dds_examples.Logs,
+        'name': '',
+        'description': ''
+    },
+
+    'support-examples': {
+        'url': '/dash-deployment-server/support',
+        'content': dds_examples.Support,
+        'name': '',
+        'description': ''
+    },
 ### End Dash Deployment Server ###
+
     'search': {
         'url': '/search',
         'content': search.layout,
