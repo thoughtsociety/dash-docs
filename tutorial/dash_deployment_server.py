@@ -8,11 +8,6 @@ def s(string_block):
 
 layout = html.Div(className='toc', children=[
     html.H1('Dash Deployment Server Documentation'),
-    dcc.Markdown(s('''
-
-        insert text about DDS documentation
-
-    ''')),
 
     reusable_components.Section("What's Dash Deployment Server?", [
         reusable_components.Chapter('Dash Deployment Server',
@@ -29,21 +24,21 @@ layout = html.Div(className='toc', children=[
                 'the Dash Deployment Server.'),
         reusable_components.Chapter('Initialize Dash Apps on Plotly Enterprise',
                 '/dash-deployment-server/initialize',
-                'Get started by initializing an app.'),
+                'Initialize an app via Dash Deployment Server UI.'),
         reusable_components.Chapter('Dash App Requirements',
                 '/dash-deployment-server/deploy-requirements',
                 'Ensure that your app meets all the requirements for deployment.'),
         reusable_components.Chapter('Deploy Dash Apps on Plotly Enterprise',
                 '/dash-deployment-server/deployment',
                 'Deploy dash apps to the Dash Deployment Server using ' \
-                'HTTPS or SSH. Clone, start new, or deploy an exisiting ' \
+                'HTTPS or SSH. Clone, create a new, or deploy an exisiting ' \
                 'app.')
     ]),
 
     reusable_components.Section("Configuration", [
         reusable_components.Chapter('Configuring System Dependencies',
                 '/dash-deployment-server/configure-system-dependencies',
-                'In some cases you may need to install and configure system dependencies such as installing and configuring database drivers or the Java JRE environment.'),
+                'Install and configure system dependencies such as database drivers or the Java JRE environment.'),
         reusable_components.Chapter('Setting Enviornment Variables',
                 '/dash-deployment-server/enviornment-variables',
                 'Environment variables are config values that can affect the ' \
@@ -64,16 +59,16 @@ layout = html.Div(className='toc', children=[
     ]),
 
     reusable_components.Section("Troubleshooting", [
-        reusable_components.Chapter('Common Errors',
-                '/dash-deployment-server/troubleshooting',
-                """Common mistakes and errors when deploying dash apps."""),
         reusable_components.Chapter('App Analytics',
                 '/dash-deployment-server/analytics',
-                """View app analytics such as ... ."""),
+                """View app analytics such as last updated, CPU usage, Memory Usage, plus more."""),
         reusable_components.Chapter('App Logs',
                 '/dash-deployment-server/logs',
                 """Check your dash app's logs via the Dash Deployment Server
-                interface or using the command line."""),
+                UI or via the command line."""),
+        reusable_components.Chapter('Common Errors',
+                '/dash-deployment-server/troubleshooting',
+                """Common errors when deploying dash apps."""),
         reusable_components.Chapter('Support',
                 '/dash-deployment-server/support',
                 """Having trouble deploying your app?""")
