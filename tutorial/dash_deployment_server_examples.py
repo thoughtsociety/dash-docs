@@ -386,7 +386,17 @@ Deploy = html.Div(children=[
         value='Windows',
         labelStyle={'display': 'inline-block'}
     ),
-    html.Div(id='instructions-2')
+    html.Div(id='instructions-2'),
+    dcc.RadioItems(
+        id='deploy-method',
+        options=[
+            {'label': i, 'value': i} for i in
+            ['HTTPS', 'SSH']],
+        value='HTTPS',
+        labelStyle={'display': 'inline-block'}
+    ),
+    html.Div(id='remote-and-deploy-instructions'),
+
 ])
 
 
@@ -443,6 +453,21 @@ $ git clone https://github.com/plotly/dash-on-premise-sample-app.git
                     (the default), then you will just need to change the
                     `DASH_APP_NAME` to be equal to the name of the Dash app that you
                     set earlier.
+                    ''')),
+
+                    dcc.Markdown(s(
+                    '''
+                    ***
+
+                    #### Configure your Plotly Enterprise server to be your Git remote
+
+                    In the root of your folder, run the following command to create a
+                    remote host to your new app on Plotly Enterprise.
+
+                    &nbsp;
+
+                    ##### Which Deployment Method Are You Using?
+
                     ''')),
                 ])
             ]),
@@ -589,6 +614,21 @@ You can fill this file in automatically with:
                     '''
 $ pip freeze > requirements.txt
                     ''', customStyle=styles.code_container),
+
+                    dcc.Markdown(s(
+                    '''
+                    ***
+
+                    #### Configure your Plotly Enterprise server to be your Git remote
+
+                    In the root of your folder, run the following command to create a
+                    remote host to your new app on Plotly Enterprise.
+
+                    &nbsp;
+
+                    ##### Which Deployment Method Are You Using?
+
+                    ''')),
                 ])
             ]),
             dcc.Tab(label='Deploy Existing App', children=[
@@ -620,26 +660,33 @@ $ git init # initializes an empty git repo
                     If you're satisfied, advance to
                     **Configure your Plotly Enterprise server to be your Git remotes**.
 
+                    ***
+
+                    #### Configure your Plotly Enterprise server to be your Git remote
+
+                    In the root of your folder, run the following command to create a
+                    remote host to your new app on Plotly Enterprise.
+
+                    &nbsp;
+
+                    ##### Which Deployment Method Are You Using?
 
                     ''')),
                 ])
             ]),
         ]),
 
-        dcc.Markdown(s(
-        '''
+]
 
-        ***
-
-        #### Configure your Plotly Enterprise server to be your Git remote
-
-        In the root of your folder, run the following command to create a
-        remote host to your new app on Plotly Enterprise.
-        ''')),
-
+@app.callback(Output('remote-and-deploy-instructions', 'children'),
+              [Input('deploy-method', 'value')])
+def display_instructions2(method):
+    return [
         dcc.SyntaxHighlighter(s(
         '''
-$ git remote add plotly dokku@your-dash-app-manager:your-dash-app-name
+    $ git remote add plotly dokku@your-dash-app-manager:your-dash-app-name
+        ''' if method == 'SSH' else '''
+    $ git remote add plotly https://your-dash-app-manager/GIT/your-dash-app-name
         '''),
         customStyle=styles.code_container,
         language='python'
@@ -647,15 +694,27 @@ $ git remote add plotly dokku@your-dash-app-manager:your-dash-app-name
 
         dcc.Markdown(s(
         '''
-Replace `your-dash-app-name` with the name of your Dash app that you supplied
-in the Dash Deployment Server and `your-dash-app-manager` with the domain of the
-Dash Deployment Server.
+    &nbsp;
 
-For example, if your Dash app name was `my-first-dash-app`
-and the domain of your organizations Dash Deployment Server was `dash.plotly.acme-corporation.com`,
-then this command would be
-`git remote add plotly dokku@dash.plotly.acme-corporation.com:my-first-dash-app`.
+    Replace `your-dash-app-name` with the name of your Dash app that you supplied
+    in the Dash Deployment Server and `your-dash-app-manager` with the domain of the
+    Dash Deployment Server.
 
+    For example, if your Dash app name was `my-first-dash-app`
+    and the domain of your organizations Dash Deployment Server was `dash.plotly.acme-corporation.com`,
+    then this command would be
+    `git remote add plotly dokku@dash.plotly.acme-corporation.com:my-first-dash-app`.
+        ''' if method == 'SSH' else '''
+    &nbsp;
+
+    Replace `your-dash-app-name` with the name of your Dash app that you supplied
+    in the Dash Deployment Server and `your-dash-app-manager` with the domain of the
+    Dash Deployment Server.
+
+    For example, if your Dash app name was `my-first-dash-app`
+    and the domain of your organizations Dash Deployment Server was `dash.plotly.acme-corporation.com`,
+    then this command would be
+    `git remote add plotly https://dash.plotly.acme-corporation.com/GIT/my-first-dash-app`.
         ''')),
 
         dcc.Markdown(s(
@@ -670,11 +729,11 @@ then this command would be
 
         dcc.SyntaxHighlighter(s(
         '''
-$ git status # view the changed files
-$ git diff # view the actual changed lines of code
-$ git add .  # add all the changes
-$ git commit -m 'a description of the changes'
-$ git push plotly master
+    $ git status # view the changed files
+    $ git diff # view the actual changed lines of code
+    $ git add .  # add all the changes
+    $ git commit -m 'a description of the changes'
+    $ git push plotly master
         '''), customStyle=styles.code_container, language='python'),
 
         dcc.Markdown(s(
