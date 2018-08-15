@@ -151,10 +151,11 @@ def display_instructions(platform):
         dcc.Markdown(s('''
         **2. Open the Dash Deployment Server UI**
 
-        You can find the Dash Deployment Server UI by clicking on "Dash App" in your
-        Plotly Enterprise's "Create" menu.
+        You can find the Dash Deployment Server UI by clicking on "Dash App"
+        in your Plotly Enterprise's "Create" menu.
 
-        > *The Dash App item in the Create menu takes you to the Dash Deployment Server UI*
+        > *The Dash App item in the Create menu takes you to the Dash
+        Deployment Server UI*
         ''')),
 
         html.Img(
@@ -204,11 +205,12 @@ def display_instructions(platform):
 
         #### Modify SSH Config
 
-        Next, specify a custom port in your SSH config. By default, this should be
-        `3022` but your server administrator may have set it to something different.
+        Next, specify a custom port in your SSH config. By default, this
+        should be `3022` but your server administrator may have set it to
+        something different.
 
-        This file is located in `~/.ssh/config`. If it's not there, then create it.
-        Add the following lines to
+        This file is located in `~/.ssh/config`. If it's not there, then
+        create it. Add the following lines to
         this file, replacing `your-dash-app-manager` with the domain of
         your Dash Deployment Server (without `http://` or `https://`).
         ''')),
@@ -217,16 +219,18 @@ def display_instructions(platform):
         Port 3022''', customStyle=styles.code_container),
 
         (dcc.Markdown('''
-        If you're having trouble opening this file, you can run `$ open ~/.ssh/config`
-        which will open the file using your default editor. If the file doesn't exist,
-        then you can open that hidden folder with just `$ open ~/.ssh`
+        If you're having trouble opening this file, you can run
+        `$ open ~/.ssh/config` which will open the file using your default
+        editor. If the file doesn't exist, then you can open that hidden
+        folder with just `$ open ~/.ssh`
         ''') if platform == 'Mac' else ''),
 
         (dcc.Markdown('''
         Please be careful not to save your SSH config as a .txt file as
-        it will not be recognized by Git when deploying your applications. If you are using
-        Notepad to create your SSH config, you can force the removal of the .txt extension
-        by naming the file "config", including the quotes, in the Save As dialog box.
+        it will not be recognized by Git when deploying your applications.
+        If you are using Notepad to create your SSH config, you can force the
+        removal of the .txt extension by naming the file "config", including
+        the quotes, in the Save As dialog box.
         ''') if platform == 'Windows' else ''),
 
 
@@ -398,8 +402,8 @@ Deploy = html.Div(children=[
     '''
     ***
 
-    To deploy an app to your Dash Deployment Server, you can either choose to
-    deploy a cloned sample app, create a new app following the tutorial,
+    To deploy an app to your Dash Deployment Server, you can either choose
+    to deploy a cloned sample app, create a new app following the tutorial,
     or an existing app that you created locally and are ready to deploy.
     However, first ensure that you have
     [initialized the app](https://dash.plot.ly/dash-deployment-server/initialize).
@@ -468,7 +472,8 @@ def display_instructions2(platform):
 
                     &nbsp;
 
-                    #### Clone the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app) from GitHub.
+                    #### Clone the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app)
+                    from GitHub.
 
                     ''')),
 
@@ -557,7 +562,8 @@ $ pip install plotly
 
                     dcc.Markdown(s(
                     '''
-You will also need a new dependency, `gunicorn`, for deploying the app:
+                    You will also need a new dependency, `gunicorn`, for
+                    deploying the app:
                     ''')),
 
                     dcc.SyntaxHighlighter(
@@ -567,12 +573,12 @@ $ pip install gunicorn
 
                     dcc.Markdown(s(
                     '''
-***
-#### Create Relevant Files For Deployment
+                    ***
+                    #### Create Relevant Files For Deployment
 
-Create the following files in your project folder:
+                    Create the following files in your project folder:
 
-**`app.py`**
+                    **`app.py`**
                     ''')),
 
                     dcc.SyntaxHighlighter(
@@ -609,9 +615,9 @@ if __name__ == '__main__':
                     ''', customStyle=styles.code_container, language='python'),
 
                     dcc.Markdown(s('''
-***
+                    ***
 
-**`.gitignore`**
+                    **`.gitignore`**
                     ''')),
 
                     dcc.SyntaxHighlighter(
@@ -624,9 +630,9 @@ venv
 
                     dcc.Markdown(s(
                     '''
-***
+                    ***
 
-**`Procfile`**
+                    **`Procfile`**
 
                     ''')),
 
@@ -637,15 +643,15 @@ web: gunicorn app:server
 
                     dcc.Markdown(s(
                     '''
-(Note that `app` refers to the filename `app.py`.
-`server` refers to the variable `server` inside that file).
+                    (Note that `app` refers to the filename `app.py`.
+                    `server` refers to the variable `server` inside that file).
 
-***
+                    ***
 
-**`requirements.txt`**
+                    **`requirements.txt`**
 
-`requirements.txt` describes your Python dependencies.
-You can fill this file in automatically with:
+                    `requirements.txt` describes your Python dependencies.
+                    You can fill this file in automatically with:
                     ''')),
 
                     dcc.SyntaxHighlighter(
@@ -732,27 +738,27 @@ def display_instructions2(method):
 
         dcc.Markdown(s(
         '''
-    &nbsp;
+        &nbsp;
 
-    Replace `your-dash-app-name` with the name of your Dash app that you supplied
-    in the Dash Deployment Server and `your-dash-app-manager` with the domain of the
-    Dash Deployment Server.
+        Replace `your-dash-app-name` with the name of your Dash app that you
+        supplied in the Dash Deployment Server and `your-dash-app-manager`
+        with the domain of the Dash Deployment Server.
 
-    For example, if your Dash app name was `my-first-dash-app`
-    and the domain of your organizations Dash Deployment Server was `dash.plotly.acme-corporation.com`,
-    then this command would be
-    `git remote add plotly dokku@dash.plotly.acme-corporation.com:my-first-dash-app`.
-        ''' if method == 'SSH' else '''
-    &nbsp;
+        For example, if your Dash app name was `my-first-dash-app`
+        and the domain of your organizations Dash Deployment Server was
+        `dash.plotly.acme-corporation.com`, then this command would be
+        `git remote add plotly dokku@dash.plotly.acme-corporation.com:my-first-dash-app`.
+            ''' if method == 'SSH' else '''
+        &nbsp;
 
-    Replace `your-dash-app-name` with the name of your Dash app that you supplied
-    in the Dash Deployment Server and `your-dash-app-manager` with the domain of the
-    Dash Deployment Server.
+        Replace `your-dash-app-name` with the name of your Dash app that
+        you supplied in the Dash Deployment Server and `your-dash-app-manager`
+        with the domain of the Dash Deployment Server.
 
-    For example, if your Dash app name was `my-first-dash-app`
-    and the domain of your organizations Dash Deployment Server was `dash.plotly.acme-corporation.com`,
-    then this command would be
-    `git remote add plotly https://dash.plotly.acme-corporation.com/GIT/my-first-dash-app`.
+        For example, if your Dash app name was `my-first-dash-app`
+        and the domain of your organizations Dash Deployment Server was
+        `dash.plotly.acme-corporation.com`, then this command would be
+        `git remote add plotly https://dash.plotly.acme-corporation.com/GIT/my-first-dash-app`.
         ''')),
 
         dcc.Markdown(s(
@@ -934,8 +940,8 @@ Redis = html.Div(children=[
     #### Enable Redis Databases
 
     First, navigate to Plotly On-Premise Server Settings
-    (`https://<your.plotly.domain>:8800/settings`), then under **Special Options &
-    Customizations** select **Enable Dash Customizations** and **Enable Redis
+    (`https://<your.plotly.domain>:8800/settings`), then under **Special Options
+    & Customizations** select **Enable Dash Customizations** and **Enable Redis
     Databases** for Dash Apps.
     ''')),
 
@@ -1041,9 +1047,11 @@ Redis = html.Div(children=[
     &nbsp;
 
     In the commands above, replace:
-    * `YOUR_DASH_SERVER` with the name of your Dash server (same as when you run `git remote add`)
+    * `YOUR_DASH_SERVER` with the name of your Dash server
+    (same as when you run `git remote add`)
     * `SERVICE-NAME` with the name you want for your Redis service
-    * `APP-NAME` with the name of your app (as specified in the Dash App Manager).
+    * `APP-NAME` with the name of your app (as specified in the
+    Dash App Manager).
 
     '''))
 ])
@@ -1199,96 +1207,23 @@ LocalDir = html.Div(children=[
 ])
 
 # # # # # # #
-# Troubleshooting App Deployment
+# Common Errors
 # # # # # # #
 Troubleshooting = html.Div(children=[
-    html.H1('Troubleshooting App Deployment'),
-
-    dcc.Markdown(s('''
-    #### Common Errors
-
-    [insert section about commom mistakes and pitfalls ... and the workarounds.]
-
-    ''')),
-
-    # dcc.Markdown(s('''
-    # #### Dash App Analytics
-    #
-    # After you have successfully deployed a dash app to the Dash Deployment
-    # Server, you can monitor app performance via the app analytics and logs.
-    # Here, navigate to the Dash Deployment Server UI, select the app
-    # (`MANAGER/apps/<user>:<app-name>/overview`) to display the applications
-    # analytics.
-    # ''')),
-    #
-    # html.Img(
-    #     alt='App Analytics',
-    #     src='',
-    #     style={
-    #         'width': '100%', 'border': 'thin lightgrey solid',
-    #         'border-radius': '4px'
-    #     }
-    # ),
-    #
-    # dcc.Markdown(s('''
-    # #### Dash App Logs
-    #
-    # To view the logs, navigate to logs (`MANAGER/apps/<user>:<app-name>/logs`).
-    # ''')),
-    #
-    # html.Img(
-    #     alt='App Analytics',
-    #     src='',
-    #     style={
-    #         'width': '100%', 'border': 'thin lightgrey solid',
-    #         'border-radius': '4px'
-    #     }
-    # ),
-    #
-    # dcc.Markdown(s('''
-    # #### Dash App Logs (via Command Line)
-    #
-    # Alternatively, the above can be accomplished via the command line.
-    # To view the logs for a specific Dash app run the following command
-    # in your terminal:
-    #
-    # ```
-    # ssh dokku@<your-dash-domain> logs <your-app-name> --num -1
-    # ```
-    #
-    # This will work for any app you have permission on, and uses the
-    # same mechanism as pushing the app via ssh.
-    #
-    # **Options**
-    # - `--num`, `-n`: The number of lines to display. By default, 100 lines are displayed.
-    #    Set to -1 to display _all_ of the logs. Note that we only store logs from the latest app deploy.
-    # - `--tail`, `-t`: Continuously stream the logs.
-    # - `--quiet`, `-q`: Display the raw logs without colors, times, and names.
-    # ''')),
-    #
-    # dcc.Markdown(s('''
-    # #### Support
-    #
-    # If you encounter any issues deploying your app you can email
-    # `onpremise.support@plot.ly`. It is helpful to include any error
-    # messages you encounter as well as available logs. See below on how
-    # to obtain Dash app logs as well as the Plotly Enterprise support
-    # bundle.
-    # ''')),
-    #
-    # dcc.Markdown(s('''
-    # #### Enterprise Support Bundle
-    #
-    # If you're requested to send the full support bundle you can
-    # download this from your Plotly Enterprise Server Manager
-    # (e.g. `https://<your.plotly.domain>:8800`). Please note you
-    # will need admin permissions to access the Server Manager.
-    # Navigate to the Server Manager and then select the Support tab.
-    # There you will see the option to download the support bundle.
-    # '''))
+    html.H1('Common Errors'),
+    html.Img(
+        alt='Coming Soon',
+        src='https://github.com/plotly/dash-docs/raw/master/images/building.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
 ])
 
-
+# # # # # # #
+# Analytics
+# # # # # # #
 Analytics = html.Div(children=[
     html.H1('Dash App Analytics'),
     dcc.Markdown(s('''
@@ -1310,6 +1245,9 @@ Analytics = html.Div(children=[
     ),
 ])
 
+# # # # # # #
+# Logs
+# # # # # # #
 Logs = html.Div(children=[
     html.H1('Dash App Logs'),
     dcc.Markdown(s('''
@@ -1354,13 +1292,18 @@ Logs = html.Div(children=[
     &nbsp;
 
     **Options**
-    - `--num`, `-n`: The number of lines to display. By default, 100 lines are displayed.
-       Set to -1 to display _all_ of the logs. Note that we only store logs from the latest app deploy.
+    - `--num`, `-n`: The number of lines to display. By default, 100
+    lines are displayed.
+       Set to -1 to display _all_ of the logs. Note that we only store logs
+       from the latest app deploy.
     - `--tail`, `-t`: Continuously stream the logs.
     - `--quiet`, `-q`: Display the raw logs without colors, times, and names.
     ''')),
 ])
 
+# # # # # # #
+# Support
+# # # # # # #
 Support = html.Div(children=[
     html.H1('Plotly Enterprise Support'),
     dcc.Markdown(s('''
