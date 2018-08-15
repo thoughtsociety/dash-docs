@@ -376,7 +376,8 @@ chapters = {
         'url': '/dash-deployment-server/map-local-directories',
         'content': dds_examples.LocalDir,
         'name': 'Mapping Local Directories',
-        'description': 'Mapping Local Directories'
+        'description': 'Directory mappings allow you to make directories '
+        'on the Dash Deployment Server available to your app.'
     },
 
     'troubleshooting-examples': {

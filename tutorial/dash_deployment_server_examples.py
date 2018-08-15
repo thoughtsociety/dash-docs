@@ -1056,7 +1056,7 @@ EnvVars = html.Div(children=[
 
     dcc.Markdown(s('''
     Environment variables are config values that can affect the way your app
-    behaves. In Plotly Enterprise >2.5.0, you can add and remove
+    behaves. In Plotly Enterprise 2.5.0, you can add and remove
     sensitive data (e.g. API keys) via the Dash Deployment Server UI,
     rather than placing them in the repository.
 
@@ -1111,9 +1111,86 @@ EnvVars = html.Div(children=[
 # # # # # # #
 LocalDir = html.Div(children=[
     html.H1('Mapping Local Directories Examples and Reference'),
+
+    dcc.Markdown(s('''
+    Directory mappings allow you to make directories on the Dash Deployment
+    Server available to your app. In Plotly Enterprise 2.5.0, you can add and
+    remove mappings via the Dash Deployment Server UI.
+
+    ''')),
+
+    dcc.Markdown(s('''
+
+    ***
+
+    #### Note About Directory Mapping
+
+    Only users with admin/superuser privileges are allowed to map directories
+    onto apps. Please ask your current administrator to grant you
+    admin/superuser privileges as shown below and then try
+    again.
+
+    ***
+
+    #### Add Admin/Superuser Privileges
+
+    As administrator, navigate to the admin panel
+    `https://<your.plotly.domain>/admin/` and select **Users**. From the list
+    of users, select the user you wish to edit. Next, check both the
+    **Staff status** and **Superuser status** box to give the user
+    admin/superuser privileges, which will allow the user to map
+    directories onto apps.
+
+    ''')),
+
     html.Img(
-        alt='Coming Soon',
-        src='https://github.com/plotly/dash-docs/raw/master/images/building.png',
+        alt='Add Admin/Superuser Status',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/add-superuser.PNG',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+
+    ***
+
+    #### Add Directory Mapping
+
+    To add a directory mapping via the Dash Deployment Server UI,
+    navigate to the application **Settings** and scroll down to
+    **Directory Mappings**. Here, use the text boxes to
+    add the **Host Path** and **App Path**. For example, `/etc`
+    and `/my-first-app/etc`.
+
+    ''')),
+
+    html.Img(
+        alt='Add Directory Mapping',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/add-dir-map.PNG',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+
+    ***
+
+    #### Remove Directory Mapping
+
+    To remove directory mappings via the Dash Deployment Server UI,
+    navigate to the application **Settings** and scroll down to
+    **Directory Mappings**. Next, use the red cross situated to the
+    right-hand side of the environment variable.
+
+    ''')),
+
+    html.Img(
+        alt='Remove Directory Mapping',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/remove-dir-map.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'

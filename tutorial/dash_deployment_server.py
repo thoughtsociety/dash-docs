@@ -45,7 +45,8 @@ layout = html.Div(className='toc', children=[
                 'way your app behaves.'),
         reusable_components.Chapter('Mapping Local Directories',
                 '/dash-deployment-server/map-local-directories',
-                'Write something about mapping local directories')
+                'Directory mappings allow you to make directories on the '
+                'Dash Deployment Server available to your app.')
     ]),
 
     reusable_components.Section("Advanced", [
