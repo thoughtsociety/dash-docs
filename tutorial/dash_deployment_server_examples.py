@@ -16,17 +16,17 @@ Ssh = html.Div(children=[
 
     dcc.Markdown(s('''
 
-    From Plotly Enterprise 2.4.0, you can deploy your apps using
+    In Plotly Enterprise 2.4.0 and above, you can deploy your apps using
     either HTTPS or SSH. If you are deploying with HTTPS, then you do not
     need to set up an SSH key. Thus, you can skip this tutorial and go
     straight to
-    [Deploy Dash Apps on Plotly Enterprise](https://dash.plot.ly/dash-deployment-server/deployment).
+    [Initialize Dash Apps on Plotly Enterprise](https://dash.plot.ly/dash-deployment-server/initialize).
 
     &nbsp;
 
     If you are deploying with SSH then you need to add a SSH Key to the
     Dash Deployment Server. SSH Keys are used to authenticate your git
-    session with this server. Deploying with SSH takes a little bit more
+    session with the server. Deploying with SSH takes a little bit more
     time to set up but it allows you to deploy without typing in your
     username and password each time. Continue below for instructions on
     how to generate and add a SSH Key.
@@ -170,7 +170,7 @@ def display_instructions(platform):
         **3. Add SSH Key**
 
         Click **SSH Keys** in the top navigation menu of the Dash
-        Deployment Server interface. Here, select **Add Key** and in the 'Add
+        Deployment Server UI. Here, select **Add Key** and in the 'Add
         SSH Key' modal, paste in your SSH Key.
         ''')),
 
@@ -186,7 +186,7 @@ def display_instructions(platform):
         dcc.Markdown(s('''
         **4. Confirm it Has Been Added**
 
-        Once you've added an SSH key, it should be added to you list of SSH
+        Once you've added an SSH key, it should be added to your list of SSH
         Keys like the image below.
         ''')),
 
@@ -233,7 +233,8 @@ def display_instructions(platform):
         dcc.Markdown(s('''
         ***
 
-        Continue on to **Initialize Dash Apps on Plotly Enterprise**.
+        If you have successfully added your SSH Key, advance to
+        **Initialize Dash Apps on Plotly Enterprise**.
         '''))
     ]
 
@@ -244,13 +245,20 @@ Initialize = html.Div(children=[
     html.H1('Initialize App on Plotly Enterprise'),
 
     dcc.Markdown(s('''
+        Before creating or deploying a dash app locally, you need to initialize
+        an app on Plotly Enterprise. This can be achieved using the Dash
+        Deployment Server UI.
+    ''')),
+
+    dcc.Markdown(s('''
         ***
 
-        1. Navigate to the Dash Deployment Server UI
+        1. Navigate to the Dash Deployment Server UI by selecting **Dash App**
+        from the **+ Create** located in the top right-hand corner.
     ''')),
 
     html.Img(
-        alt='Dash Deployment Server UI Add App Interface',
+        alt='Dash Deployment Server UI',
         src='https://github.com/plotly/dash-docs/raw/master/images/dds/open-dds-ui.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
@@ -259,15 +267,20 @@ Initialize = html.Div(children=[
     ),
 
     dcc.Markdown(s('''
-        2. In the top right-hand corner select 'Create App'
-        3. The 'Create Dash App' modal should appear. Let’s name your Dash App and hit 'Create'.
-        App names must start with a lower case letter and may contain only lower case letters, numbers, and -.
-        It is important to keep in mind that this name is going to be part of the URL of your application.
+
+        &nbsp;
+
+        2. In the top right-hand corner select **Create App**. The
+        'Create Dash App' modal should appear. Here, name your dash app
+        (app names must start with a lower case letter and may
+        contain only lower case letters, numbers, and -) and then
+        hit **Create**. It is important to keep in mind that this name is going
+        to be part of the URL for your application.
 
     ''')),
 
     html.Img(
-        alt='Dash Deployment Server UI Add App Interface',
+        alt='Initialize App',
         src='https://github.com/plotly/dash-docs/raw/master/images/dds/add-app.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
@@ -277,12 +290,15 @@ Initialize = html.Div(children=[
 
     dcc.Markdown(s('''
 
-        4. The dash app should appear in your list of 'Apps'. Simply click on the dash app name.
+        &nbsp;
+
+        3. After you have created the app, it should appear in your list of
+        apps.
 
     ''')),
 
     html.Img(
-        alt='Dash Deployment Server UI Add App Interface',
+        alt='List of Apps',
         src='https://github.com/plotly/dash-docs/raw/master/images/dds/list-of-apps.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
@@ -292,10 +308,31 @@ Initialize = html.Div(children=[
 
     dcc.Markdown(s('''
 
-        5. Now that you’ve created this app, advance to the next chapter:
-        **Deploy Requirements**
+        &nbsp;
+
+        4. Now, simply click on the dash app name to access the app overview.
 
     ''')),
+
+    html.Img(
+        alt='Dash App Overview',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/app-overview.PNG',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+
+        &nbsp;
+
+        If you have successfully initialized an app, advance to
+        **Deploy App Requirements**. If you have encountered any issues
+        see **Troubleshooting** for help.
+
+    ''')),
+
 ])
 
 # # # # # # #
@@ -306,11 +343,11 @@ Requirements = html.Div(children=[
 
     dcc.Markdown(s(
     '''
-    ***
-
-    When it comes time to deploy dash apps to the Dash Deployment Server, there
+    To deploy dash apps to the Dash Deployment Server, there
     are a few files required for successful deployment. Below, is a common
     dash app folder structure and a brief description of each files function.
+
+    ***
 
     ## Files
 
@@ -334,17 +371,18 @@ Requirements = html.Div(children=[
 
     `config.py` - an optional file for configurations.
 
-    `.gitignore` - determine which files and folders are ignored.
+    `.gitignore` - determines which files and folders are ignored.
 
-    `Procfile` - declares what commnads are run by app's containers.
+    `Procfile` - declares what commands are run by app's containers.
 
-    `requirements.txt` - describes your python dependencies.
+    `requirements.txt` - describes the app's python dependencies.
 
     `runtime.txt` - specifies python runtime.
 
     &nbsp;
 
-    To learn more about local assests (stylesheets and scripts) see [here](https://dash.plot.ly/external-resources).
+    If you would like to know more about local assests (stylesheets and
+    scripts), click [here](https://dash.plot.ly/external-resources).
 
     '''))
 ])
@@ -360,12 +398,12 @@ Deploy = html.Div(children=[
     '''
     ***
 
-    This tutorial will instruct you on how to deploy an app to your Dash
-    Deployment Server. Below, you can either choose to deploy a cloned sample
-    app, create a new app following the tutorial, or an existing app that you
-    created locally and are ready to deploy. However, first ensure that you have
+    To deploy an app to your Dash Deployment Server, you can either choose to
+    deploy a cloned sample app, create a new app following the tutorial,
+    or an existing app that you created locally and are ready to deploy.
+    However, first ensure that you have
     [initialized the app](https://dash.plot.ly/dash-deployment-server/initialize).
-    Additionally, check the app you are deploying has the
+    Additionally, check the app that you are deploying has the
     [required files](https://dash.plot.ly/dash-deployment-server/deploy-requirements).
 
     ''')),
@@ -413,10 +451,10 @@ def display_instructions2(platform):
 
         If you haven't deployed an app you can get started by selecting
         **Clone Sample App** to clone our sample app, which is already setup
-        for for deployment. Alternatively, you can select **Create New App** to
-        run through creating and deploying an app. Otherwise, if you already
-        have an exisiting app locally that you would like to deploy,
-        then select **Deploy Existing App**.
+        for deployment. Alternatively, you can select **Create New App** to
+        run through creating and deploying an app from the beginning.
+        Otherwise, if you already have an exisiting app locally that you would
+        like to deploy, then select **Deploy Existing App**.
 
         &nbsp;
 
@@ -656,7 +694,7 @@ $ git init # initializes an empty git repo
                     #### Check Deploy Requirements
 
                     Ensure that you have met all deploy requirements. See,
-                    [**Deploy Requirements**](https://dash.plot.ly/dash-deployment-server/deploy-requirements).
+                    [**Deploy App Requirements**](https://dash.plot.ly/dash-deployment-server/deploy-requirements).
                     If you're satisfied, advance to
                     **Configure your Plotly Enterprise server to be your Git remotes**.
 
@@ -738,6 +776,9 @@ def display_instructions2(method):
 
         dcc.Markdown(s(
         '''
+
+        &nbsp;
+
         This commands will push the code in this folder to the
         Dash Deployment Server and while doing so, will install the
         necessary python packages and run your application
@@ -760,9 +801,13 @@ Authentication = html.Div(children=[
     html.H1('Dash App Authentication'),
     dcc.Markdown(s('''
     The `dash-auth` package provides login through your Plotly
-    Enterprise accounts.
+    Enterprise accounts. For example, the discussion below describes how
+    `dash-auth` works in the
+    [On-Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app/).
 
-    #### Modify the `config.py` file
+    ***
+
+    #### Modify the `config.py` File
 
     This file contains several settings that are used in your app.
     It's kept in a separate file so that it's easy for you to
@@ -772,7 +817,9 @@ Authentication = html.Div(children=[
     ''')),
 
     dcc.Markdown(s('''
-    #### Redeploy your app
+    ***
+
+    #### Redeploy Your App
 
     Your app should now have a Plotly Enterprise login screen.
     You can manage the permissions of the app in your list of files
@@ -792,6 +839,8 @@ ConfigSys = html.Div(children=[
     Plotly Enterprise supports these actions through an
     `apt-packages` file and a `predeploy` script.
 
+    ***
+
     #### Install Apt Packages
 
     In the root of your application folder create a file called
@@ -807,6 +856,8 @@ ConfigSys = html.Div(children=[
     '''), customStyle=styles.code_container, language="text"),
 
     dcc.Markdown(s('''
+
+    ***
 
     #### Configure System Dependencies
 
@@ -878,9 +929,12 @@ Redis = html.Div(children=[
     ''')),
 
     dcc.Markdown(s('''
+    ***
+
     #### Enable Redis Databases
 
-    First navigate to the `8800/settings`, under **Special Options &
+    First, navigate to Plotly On-Premise Server Settings
+    (`https://<your.plotly.domain>:8800/settings`), then under **Special Options &
     Customizations** select **Enable Dash Customizations** and **Enable Redis
     Databases** for Dash Apps.
     ''')),
@@ -895,22 +949,29 @@ Redis = html.Div(children=[
     ),
 
     dcc.Markdown(s('''
-    #### Create and Link (via Interface)
+    ***
+
+    #### Create and Link (via UI)
 
     In Plotly Enterprise 2.5.0 it is possible to create and link a Redis
     Database to your dash app using the Dash Deployment Server UI.
     Here, you have two options:
 
-    1. Create a database before initializing an app.
-    2. Create and link a database after an app has been initialized.
+    &nbsp;
+
+    **1.** Create a database before initializing an app.
+
+    **2.** Create and link a database after an app has been initialized.
+
+    &nbsp;
 
     ##### Create a Database Before Initializing an App
 
     If you haven't initialized an app yet, select **Databases** situated in the
     top navigation menu. Next, click **Create Database**, then in the
     'Create Database' modal, add the name of your database
-    (for example, `redis-one`). Once it has been created, you'll notice that
-    it is added to your list of databases.
+    (for example, `my-first-redis-db`). Once it has been created, you'll
+    notice that it is added to your list of databases.
     ''')),
 
     html.Img(
@@ -923,10 +984,12 @@ Redis = html.Div(children=[
     ),
 
     dcc.Markdown(s('''
-    Now, navigate to Apps and create a new app (for more info see ['Create and
-    Deploy an App'](https://www.dash.plot.ly/dash-deployment-server/deployment)),
-    in the 'Create App' modal you have the option of linking a databases.
-    Here, use the dropdown to select the database that you just created
+    &nbsp;
+
+    Next, navigate to **Apps** and create a new app (for more info see
+    ['Deploy an App on Plotly Enterprise'](https://www.dash.plot.ly/dash-deployment-server/deployment)),
+    in the 'Create App' modal you have the option of linking a database.
+    Here, use the dropdown to select the database that you created previously
     (see image below).
     ''')),
 
@@ -940,12 +1003,13 @@ Redis = html.Div(children=[
     ),
 
     dcc.Markdown(s('''
+    &nbsp;
+
     ##### Create and Link a Database After an App Has Been Initialized.
 
-    In the Dash App Manager (`MANAGER/apps`), click on the app then navigate
-    to the settings (`MANAGER/apps/<user>:<app-name>/settings`) page.
-    In Databases, use the dropdown to select **create and link database**
-    then click **Add**.
+    In the Dash Deployment Server UI, click on the app then navigate
+    to the settings page. In Databases, use the dropdown to select
+    **create and link database** then click **Add**.
 
     ''')),
 
@@ -959,16 +1023,22 @@ Redis = html.Div(children=[
     ),
 
     dcc.Markdown(s('''
+    ***
+
     #### Create and Link (via Command Line)
 
     Whilst it is now possible to create and link Redis Databases via the
-    interface, it is still possible to create and link a Redis database via
-    the command line (using ssh):
+    Dash Deployment Server UI, it is still possible to create and link a Redis
+    database via the command line (using ssh):
+
+    &nbsp;
 
     ```
     ssh dokku@YOUR_DASH_SERVER redis:create SERVICE-NAME
     ssh dokku@YOUR_DASH_SERVER redis:link SERVICE-NAME APP-NAME
     ```
+
+    &nbsp;
 
     In the commands above, replace:
     * `YOUR_DASH_SERVER` with the name of your Dash server (same as when you run `git remote add`)
@@ -993,11 +1063,13 @@ EnvVars = html.Div(children=[
     ''')),
 
     dcc.Markdown(s('''
+
+    ***
+
     #### Add Environment Variables
 
     To add environment variables via the Dash Deployment Server UI,
-    navigate to the application settings
-    (`MANAGER/apps/<user>:<app-name>/settings`). Here, use the text boxes to
+    navigate to the application settings. Here, use the text boxes to
     add the environmental variable name and value. For example, `DASH_APP_FID`
     and `admin:0`.
 
@@ -1013,11 +1085,13 @@ EnvVars = html.Div(children=[
     ),
 
     dcc.Markdown(s('''
+
+    ***
+
     #### Delete Environment Variables
 
     To remove an environment variable via the Dash Deployment Server UI,
-    navigate to the application settings
-    (`MANAGER/apps/<user>:<app-name>/settings`). Here, simply click the red
+    navigate to the application settings. Here, simply click the red
     cross situated to the right-hand side of the environment variable.
 
     ''')),
@@ -1139,14 +1213,14 @@ Troubleshooting = html.Div(children=[
 
 
 Analytics = html.Div(children=[
+    html.H1('Dash App Analytics'),
     dcc.Markdown(s('''
     #### Dash App Analytics
 
     After you have successfully deployed a dash app to the Dash Deployment
     Server, you can monitor app performance via the app analytics and logs.
-    Here, navigate to the Dash Deployment Server UI, select the app
-    (`MANAGER/apps/<user>:<app-name>/overview`) to display the applications
-    analytics.
+    Here, navigate to the Dash Deployment Server UI, select the app to display
+    the applications analytics.
     ''')),
 
     html.Img(
@@ -1160,10 +1234,15 @@ Analytics = html.Div(children=[
 ])
 
 Logs = html.Div(children=[
+    html.H1('Dash App Logs'),
     dcc.Markdown(s('''
-    #### Dash App Logs
+    ***
 
-    To view the logs, navigate to logs (`MANAGER/apps/<user>:<app-name>/logs`).
+    #### Dash App Logs (via UI)
+
+    If you have successfully deployed a dash app to the Dash Deployment
+    Server, you can view the app's logs via the Dash Deployment Server UI.
+    From your list of apps, open the app and then select **Logs**.
     ''')),
 
     html.Img(
@@ -1176,18 +1255,26 @@ Logs = html.Div(children=[
     ),
 
     dcc.Markdown(s('''
+    ***
+
     #### Dash App Logs (via Command Line)
 
     Alternatively, the above can be accomplished via the command line.
     To view the logs for a specific Dash app run the following command
     in your terminal:
 
+    &nbsp;
+
     ```
     ssh dokku@<your-dash-domain> logs <your-app-name> --num -1
     ```
 
+    &nbsp;
+
     This will work for any app you have permission on, and uses the
     same mechanism as pushing the app via ssh.
+
+    &nbsp;
 
     **Options**
     - `--num`, `-n`: The number of lines to display. By default, 100 lines are displayed.
@@ -1198,8 +1285,11 @@ Logs = html.Div(children=[
 ])
 
 Support = html.Div(children=[
+    html.H1('Plotly Enterprise Support'),
     dcc.Markdown(s('''
-    #### Support
+    ***
+
+    #### Need to Contact Support?
 
     If you encounter any issues deploying your app you can email
     `onpremise.support@plot.ly`. It is helpful to include any error
@@ -1209,6 +1299,8 @@ Support = html.Div(children=[
     ''')),
 
     dcc.Markdown(s('''
+    ***
+
     #### Enterprise Support Bundle
 
     If you're requested to send the full support bundle you can
