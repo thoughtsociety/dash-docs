@@ -149,17 +149,17 @@ def display_instructions(platform):
         ),
 
         dcc.Markdown(s('''
-        **2. Open the Dash Deployment Server**
+        **2. Open the Dash Deployment Server UI**
 
-        You can find the Dash Deployment Server by clicking on "Dash App" in your
+        You can find the Dash Deployment Server UI by clicking on "Dash App" in your
         Plotly Enterprise's "Create" menu.
 
-        > *The Dash App item in the Create menu takes you to the Dash Deployment Server*
+        > *The Dash App item in the Create menu takes you to the Dash Deployment Server UI*
         ''')),
 
         html.Img(
             alt='Dash App Create Menu',
-            src='',
+            src='https://github.com/plotly/dash-docs/raw/master/images/dds/open-dds-ui.png',
             style={
                 'width': '100%', 'border': 'thin lightgrey solid',
                 'border-radius': '4px'
@@ -176,7 +176,7 @@ def display_instructions(platform):
 
         html.Img(
             alt='Add SSH Key',
-            src='',
+            src='https://github.com/plotly/dash-docs/raw/master/images/dds/add-ssh-key.png',
             style={
                 'width': '100%', 'border': 'thin lightgrey solid',
                 'border-radius': '4px'
@@ -192,7 +192,7 @@ def display_instructions(platform):
 
         html.Img(
             alt='List of SSH Keys',
-            src='',
+            src='https://github.com/plotly/dash-docs/raw/master/images/dds/list-of-ssh-keys.png',
             style={
                 'width': '100%', 'border': 'thin lightgrey solid',
                 'border-radius': '4px'
@@ -246,7 +246,19 @@ Initialize = html.Div(children=[
     dcc.Markdown(s('''
         ***
 
-        1. Navigate to the Dash Deployment Server
+        1. Navigate to the Dash Deployment Server UI
+    ''')),
+
+    html.Img(
+        alt='Dash Deployment Server UI Add App Interface',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/open-dds-ui.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
         2. In the top right-hand corner select 'Create App'
         3. The 'Create Dash App' modal should appear. Let’s name your Dash App and hit 'Create'.
         App names must start with a lower case letter and may contain only lower case letters, numbers, and -.
@@ -255,8 +267,8 @@ Initialize = html.Div(children=[
     ''')),
 
     html.Img(
-        alt='Dash Deployment Server Add App Interface',
-        src='',
+        alt='Dash Deployment Server UI Add App Interface',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/add-app.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -266,10 +278,24 @@ Initialize = html.Div(children=[
     dcc.Markdown(s('''
 
         4. The dash app should appear in your list of 'Apps'. Simply click on the dash app name.
+
+    ''')),
+
+    html.Img(
+        alt='Dash Deployment Server UI Add App Interface',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/list-of-apps.PNG',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+
         5. Now that you’ve created this app, advance to the next chapter:
         **Deploy Requirements**
 
-    '''))
+    ''')),
 ])
 
 # # # # # # #
@@ -802,7 +828,7 @@ Redis = html.Div(children=[
 
     html.Img(
         alt='Enable Redis Databases',
-        src='',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/enable-redis.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -813,7 +839,7 @@ Redis = html.Div(children=[
     #### Create and Link (via Interface)
 
     In Plotly Enterprise 2.5.0 it is possible to create and link a Redis
-    Database to your dash app using the Dash Deployment Server interface.
+    Database to your dash app using the Dash Deployment Server UI.
     Here, you have two options:
 
     1. Create a database before initializing an app.
@@ -830,7 +856,7 @@ Redis = html.Div(children=[
 
     html.Img(
         alt='Create Database',
-        src='',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/create-redis-db.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -847,7 +873,7 @@ Redis = html.Div(children=[
 
     html.Img(
         alt='Link Database',
-        src='',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/link-redis-db.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -866,7 +892,7 @@ Redis = html.Div(children=[
 
     html.Img(
         alt='Create and Link Database in App',
-        src='',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/create-and-link-redis-db.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -902,7 +928,7 @@ EnvVars = html.Div(children=[
     dcc.Markdown(s('''
     Environment variables are config values that can affect the way your app
     behaves. In Plotly Enterprise >2.5.0, you can add and remove
-    sensitive data (e.g. API keys) via the Dash Deployment Server interface,
+    sensitive data (e.g. API keys) via the Dash Deployment Server UI,
     rather than placing them in the repository.
 
     ''')),
@@ -910,7 +936,7 @@ EnvVars = html.Div(children=[
     dcc.Markdown(s('''
     #### Add Environment Variables
 
-    To add environment variables via the Dash Deployment Server interface,
+    To add environment variables via the Dash Deployment Server UI,
     navigate to the application settings
     (`MANAGER/apps/<user>:<app-name>/settings`). Here, use the text boxes to
     add the environmental variable name and value. For example, `DASH_APP_FID`
@@ -920,7 +946,7 @@ EnvVars = html.Div(children=[
 
     html.Img(
         alt='Add Environment Variables',
-        src='',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/add-env-variable.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -930,7 +956,7 @@ EnvVars = html.Div(children=[
     dcc.Markdown(s('''
     #### Delete Environment Variables
 
-    To remove an environment variable via the Dash Deployment Server interface,
+    To remove an environment variable via the Dash Deployment Server UI,
     navigate to the application settings
     (`MANAGER/apps/<user>:<app-name>/settings`). Here, simply click the red
     cross situated to the right-hand side of the environment variable.
@@ -939,7 +965,7 @@ EnvVars = html.Div(children=[
 
     html.Img(
         alt='Delete Environment Variables',
-        src='',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/remove-env-variable.PNG',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -980,7 +1006,7 @@ Troubleshooting = html.Div(children=[
     #
     # After you have successfully deployed a dash app to the Dash Deployment
     # Server, you can monitor app performance via the app analytics and logs.
-    # Here, navigate to the Dash Deployment Server Manager, select the app
+    # Here, navigate to the Dash Deployment Server UI, select the app
     # (`MANAGER/apps/<user>:<app-name>/overview`) to display the applications
     # analytics.
     # ''')),
@@ -1059,14 +1085,14 @@ Analytics = html.Div(children=[
 
     After you have successfully deployed a dash app to the Dash Deployment
     Server, you can monitor app performance via the app analytics and logs.
-    Here, navigate to the Dash Deployment Server Manager, select the app
+    Here, navigate to the Dash Deployment Server UI, select the app
     (`MANAGER/apps/<user>:<app-name>/overview`) to display the applications
     analytics.
     ''')),
 
     html.Img(
         alt='App Analytics',
-        src='',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/analytics.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1082,8 +1108,8 @@ Logs = html.Div(children=[
     ''')),
 
     html.Img(
-        alt='App Analytics',
-        src='',
+        alt='App Logs',
+        src='https://github.com/plotly/dash-docs/raw/master/images/dds/logs.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
